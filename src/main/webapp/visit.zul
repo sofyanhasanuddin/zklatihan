@@ -1,0 +1,48 @@
+<?page title="Employee" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="/WEB-INF/security.tld" prefix="sec"?>
+
+<zk>
+	<window apply="org.sofyan.latihan.app.ctrl.VisitCtrl">
+		<groupbox>
+			<caption>Search Customer</caption>
+			<grid style="border:none;">
+				<columns>
+					<column width="100px" />
+					<column width="200px" />
+					<column width="100px" />
+					<column width="200px" />
+				</columns>
+				<rows>
+					<row style="background:#FFFFFF;">
+						<label>Customer Name</label>
+						<textbox id="txtCustomerName" value="@{ vsb.name }" ></textbox>	
+					</row>
+					<row style="background:#FFFFFF;">
+						<label>Entry Date</label>
+						<datebox id="dtEntry" format="dd/MMM/yyyy"  value="@{ vsb.entryDate }" />
+						<label>Leave Date</label>
+						<datebox id="dtLeave" format="dd/MMM/yyyy" value="@{ vsb.leaveDate }" />	
+					</row>
+					<row spans="4" style="background:#FFFFFF;">
+						<button id="btnSearch" >Search</button>							
+					</row>
+				</rows>
+			</grid>
+		</groupbox>
+		
+		<div style="height:10px;"></div>
+
+		<listbox id="mainList" multiple="false" checkmark="false"
+			emptyMessage="There is no customer's visit">
+			<listhead sizable="true">
+				<listheader align="center" id="listHeaderName" label="Name"/>
+				<listheader align="center" id="listHeaderEntryDate" label="Entry Date"/>
+				<listheader align="center" id="listHeaderLeaveDate" label="Leave Date" />
+				<listheader align="center" label="Visited Pets" />
+				<listheader align="center" label="Action" />
+			</listhead>
+		</listbox>
+		<paging id="mainPaging" detailed="true" ></paging>
+
+	</window>
+</zk>

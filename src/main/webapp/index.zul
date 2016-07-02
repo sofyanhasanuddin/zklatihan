@@ -1,0 +1,51 @@
+<zk>
+	<style>
+		body {
+			padding : 0 0px;
+		}
+		.z-row:hover>.z-row-inner>.z-row-content {
+    		color: #000;
+		} 
+		.z-notification .z-notification-content {
+			background: none repeat scroll 0 center transparent;
+			font-size: 14px;
+			font-weight: normal;
+			margin: 0 !important;
+			overflow: hidden;
+			background-color: #f78d1d;
+			color: white;
+			width: 300px;
+			min-height: 53px;
+		}
+	</style>
+	<zscript>
+		<![CDATA[
+		
+			public void changePage(String zulPage) {
+				if( "logout".equalsIgnoreCase( zulPage ) ) {
+					Executions.sendRedirect("/logout");
+				} else {
+					content.setSrc( "" + zulPage );
+				}
+			}
+		
+		]]>
+	</zscript>
+	<borderlayout apply="org.sofyan.latihan.app.ctrl.IndexCtrl" >
+		<north height="30px">
+			<!-- Begin Menu -->
+			<menubar autodrop="true">
+				<menuitem visible="true" label="Manage Customer(s)" id="customer" value="customer.zul" onClick="changePage( self.value)" />
+				<menuitem visible="true" label="Manage Visit(s)" id="visit" value="visit.zul" onClick="changePage( self.value)" />
+				<menuitem visible="true" label="Manage User(s)" id="user" value="user.zul" onClick="changePage( self.value)" />
+				<menuitem label="Log out" style="float:right !important;" id="logout" value="logout" onClick="changePage( self.value )" />
+			</menubar>
+			<!-- End Menu -->
+		</north>
+		<center border="0" autoscroll="true" >
+			<div>
+				<include id="content" mode="auto"></include>
+			</div>
+		</center>
+	</borderlayout>
+</zk>

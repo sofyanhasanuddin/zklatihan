@@ -1,0 +1,27 @@
+<?page title="Employee" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="/WEB-INF/security.tld" prefix="sec"?>
+
+<zk>
+	<window apply="org.sofyan.latihan.app.ctrl.EmployeeCtrl">
+		<groupbox>
+			<caption>Action</caption>
+			<button id="btnAdd">Add</button>
+			<button id="btnEdit">Edit</button>
+			<button id="btnDelete" if="${sec:isAllGranted('ROLE_USERS')}" >Delete</button>
+		</groupbox>
+
+		<groupbox>
+			<caption>List Employee</caption>
+				<listbox id="listEmp" multiple="true" checkmark="true"
+					emptyMessage="There is no employee(s)">
+					<listhead sizable="true">
+						<listheader id="listHeaderName" label="Employee Name"/>
+						<listheader id="listHeaderSalary" label="Employee Salary"/>
+						<listheader label="Created Date" />
+					</listhead>
+				</listbox>
+				<paging id="pagingListEmp" detailed="true" ></paging>
+		</groupbox>
+
+	</window>
+</zk>

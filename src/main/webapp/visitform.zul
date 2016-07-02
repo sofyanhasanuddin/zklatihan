@@ -1,0 +1,72 @@
+<?page title="Employee Form" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="Visit Form" 
+			border="normal" 
+			closable="false" 
+			width="1000px" 
+			apply="org.sofyan.latihan.app.ctrl.VisitFormCtrl">
+
+		<grid style="border:none;">
+			<columns>
+				<column width="150px"></column>
+				<column label="" />
+			</columns>
+			<rows id="form" >
+				<row style="background:#FFFFFF;">
+					<label value="Customer Name" />
+					<hlayout>
+						<label id="sampleTxt" 
+								value="@{ visit.owner.name }"/>
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Entry Date" />
+					<hlayout>
+						<datebox value="@{ visit.entryDate }" 
+								tabindex="2" 
+								constraint="no empty:Entry date should be not empty"  />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Leave Date" />
+					<hlayout>
+						<datebox value="@{ visit.leaveDate }" 
+								tabindex="3" 
+								constraint="no empty:Leave date should be not empty"  />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Note" />
+					<hlayout>
+						<textbox multiline="true" 
+								height="80px" 
+								width="250px;" 
+								value="@{ visit.note }" 
+								tabindex="4" />
+					</hlayout>
+				</row>
+			</rows>
+		</grid>
+		
+		<groupbox>
+			<caption>Pets</caption>
+			<div style="margin-bottom:5px;">
+				<button id="btnAddPet" >Add</button>
+			</div>
+			<grid id="gridPetVisitDetail" emptyMessage="There is no pet(s)">
+				<columns>
+					<column align="center" >Name</column>
+					<column align="center">Type</column>
+					<column align="center">Date of birth</column>
+					<column align="center">Action</column>
+				</columns>			
+			</grid>
+		</groupbox>
+		
+		<div align="center" style="margin-top:5px;">
+			<button label="save" id="btnSave" />
+			<button label="cancel" id="btnCancel" />
+		</div>
+
+	</window>
+</zk>

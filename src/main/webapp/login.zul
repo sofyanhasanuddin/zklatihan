@@ -1,0 +1,56 @@
+<zk>
+	<style>
+		.centerOfScreen {
+		    position:fixed;
+		    top: 50%;
+		    left: 50%;
+		    width:30em;
+		    margin-top: -9em; /*set to a negative number 1/2 of your height*/
+		    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+		    border: 1px solid #000;
+		    background-color: #f3f3f3;
+		}
+		
+		.loginLabel {
+			font-family: "Times New Roman", Times, serif;
+			font-size: 30px;
+			font-weight: bold;
+						
+		}
+		.z-row:hover>.z-row-inner>.z-row-content {
+    		color: #000;
+		}
+		.z-grid-odd>.z-row-inner, .z-grid-odd>.z-cell {
+			background:#FFFFFF;
+		}
+		.z-row-inner {
+			background:#FFFFFF;
+		}		
+	</style>
+
+	<div sclass="centerOfScreen">
+		<div style="background-color:#e67300;border: 0 1px;padding:5px;">
+			<label sclass="loginLabel">Login</label>
+		</div>
+		<html:form action="j_spring_security_check" method="POST" xmlns:html="native">
+		    <grid>
+		        <rows>
+		        	<row if="${not empty param.login_error}" spans="2">
+		        		<hbox style="color:red;">
+						        Your login attempt was not successful, try again.
+						        Reason: ${SPRING_SECURITY_LAST_EXCEPTION.message}
+		        		</hbox>
+		        	</row>
+		            <row><label>User: </label><textbox id="u" name="j_username"/></row>
+		            <row>Password: <textbox id="p" type="password" name="j_password"/></row>
+		            <row spans="2">
+		                <div align="center">
+		                    <button type="reset" label="Reset" />
+		                    <button type="submit" label="Login" />
+		                </div>
+		            </row>
+		        </rows>
+		    </grid>
+	    </html:form>
+    </div>
+</zk>

@@ -1,0 +1,41 @@
+<?page title="Employee Form" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window style="z-index:2000!important;" title="Pet Form" border="normal" closable="false" width="400px" apply="org.sofyan.latihan.app.ctrl.PetFormCtrl">
+	
+		<grid id="form" style="border:none;">
+			<columns>
+				<column width="150px"></column>
+				<column label="" />
+			</columns>
+			<rows>
+				<row style="background:#FFFFFF;">
+					<label value="Pet Name" />
+					<hlayout>
+						<textbox value="@{ pet.name }" tabindex="5" constraint="no empty:Name should be not empty"  />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Pet Type" />
+					<hlayout>
+						<listbox id="petTypes" tabindex="6" mold="select" hflex="2" model="@{petType}" />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Date of Birth" />
+					<hlayout>
+						<datebox value="@{ pet.birthDate }" tabindex="7" constraint="no empty:Date of Birth should be not empty"/>
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;" spans="2">
+					<div align="center">
+						<button label="save" id="btnSave" />
+						<button label="cancel" id="btnCancel" />
+					</div>
+				</row>
+			</rows>
+		</grid>
+		
+	</window>
+	
+</zk>

@@ -1,0 +1,62 @@
+<?page title="Employee Form" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+	<window title="Visit Pet Form" 
+			border="normal" 
+			closable="false" 
+			width="600px" 
+			apply="org.sofyan.latihan.app.ctrl.VisitPetFormCtrl">
+	
+		<grid id="form" style="border:none;">
+			<columns>
+				<column width="150px"></column>
+				<column label="" />
+			</columns>
+			<rows>
+				<row style="background:#FFFFFF;">
+					<label value="Pet Name" />
+					<hlayout>
+						<listbox id="pets" 
+								mold="select" 
+								model="@{ petsModel }"
+								hflex="1" />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Type" />
+					<hlayout>
+						<label id="txtType"  />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Birth Date" />
+					<hlayout>
+						<label id="txtBod" />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label>Treatment Type</label>
+					<hbox id="treatmentTypeBox"/>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Note" />
+					<hlayout>
+						<textbox multiline="true" 
+								height="80px" 
+								width="250px;" 
+								value="@{ visitdetail.note }" 
+								tabindex="4" />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;" spans="2">
+					<div align="center">
+						<button label="save" id="btnSave" />
+						<button label="cancel" id="btnCancel" />
+					</div>
+				</row>
+			</rows>
+		</grid>
+		
+	</window>
+	
+</zk>
