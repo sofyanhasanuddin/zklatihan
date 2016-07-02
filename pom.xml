@@ -85,12 +85,6 @@
 			<artifactId>zhtml</artifactId>
 			<version>${zk.version}</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>org.zkoss.zk</groupId>
-			<artifactId>sapphire</artifactId>
-			<version>8.0.0</version>
-		</dependency>
 
 		<dependency>
 			<groupId>commons-io</groupId>
