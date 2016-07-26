@@ -4,7 +4,7 @@ Simple pet clinic with ZK Spring Hibernate
 Technologies used
 -------------
 1. ZK Framework 7.0
-2. Spring Security, Core, Transaction, DataJPA
+2. Spring Boot, Security, Core, Transaction, DataJPA
 3. Hibernate-JPA
 4. Maven
 
