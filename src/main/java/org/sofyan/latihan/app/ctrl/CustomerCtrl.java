@@ -137,14 +137,14 @@ public class CustomerCtrl extends PageCtrl<Owner> {
 		Map<String, Object> mapParam = new HashMap<String, Object>();
 		mapParam.put("param", v );
 		
-		Window window = (Window) Executions.createComponents( "/visitform.zul", null, mapParam);
+		Window window = (Window) Executions.createComponents( "/page/visitform.zul", null, mapParam);
         window.doModal();
 		
 	}
 
 	@Override
 	String getZulFormName() {
-		return "/customerform.zul";
+		return "/page/customerform.zul";
 	}
 
 	@Override

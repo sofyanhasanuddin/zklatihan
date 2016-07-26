@@ -1,6 +1,10 @@
 <?page title="Employee Form" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window title="Customer Form" border="normal" closable="false" width="800px" apply="org.sofyan.latihan.app.ctrl.CustomerFormCtrl">
+	<window title="Visit Form" 
+			border="normal" 
+			closable="false" 
+			width="1000px" 
+			apply="org.sofyan.latihan.app.ctrl.VisitFormCtrl">
 
 		<grid style="border:none;">
 			<columns>
@@ -11,25 +15,38 @@
 				<row style="background:#FFFFFF;">
 					<label value="Customer Name" />
 					<hlayout>
-						<textbox id="sampleTxt" value="@{ customer.name }" tabindex="1" constraint="no empty:Name should be not empty" />
+						<label id="sampleTxt" 
+								value="@{ visit.owner.name }"/>
 					</hlayout>
 				</row>
 				<row style="background:#FFFFFF;">
-					<label value="Customer Address" />
+					<label value="Entry Date" />
 					<hlayout>
-						<textbox multiline="true" height="80px" width="250px;" value="@{ customer.address }" tabindex="2" constraint="no empty:Address should be not empty"  />
+						<datebox value="@{ visit.entryDate }"
+								format="dd/MMM/yyyy" 
+								tabindex="2" 
+								id="entryDate"
+								constraint="no empty:Entry date should be not empty"  />
 					</hlayout>
 				</row>
 				<row style="background:#FFFFFF;">
-					<label value="City" />
+					<label value="Leave Date" />
 					<hlayout>
-						<textbox value="@{ customer.city }" tabindex="3" constraint="no empty:City should be not empty"  />
+						<datebox value="@{ visit.leaveDate }"
+								format="dd/MMM/yyyy"
+								id="leaveDate" 
+								tabindex="3"
+								constraint="no empty:Leave date should be not empty" />
 					</hlayout>
 				</row>
 				<row style="background:#FFFFFF;">
-					<label value="Telephone" />
+					<label value="Note" />
 					<hlayout>
-						<intbox value="@{ customer.telephone }" tabindex="4" constraint="no empty:Telephone should be not empty"  ></intbox>
+						<textbox multiline="true" 
+								height="80px" 
+								width="250px;" 
+								value="@{ visit.note }" 
+								tabindex="4" />
 					</hlayout>
 				</row>
 			</rows>
@@ -40,7 +57,7 @@
 			<div style="margin-bottom:5px;">
 				<button id="btnAddPet" >Add</button>
 			</div>
-			<grid id="gridPet" emptyMessage="There is no pet(s)">
+			<grid id="gridPetVisitDetail" emptyMessage="There is no pet(s)">
 				<columns>
 					<column align="center" >Name</column>
 					<column align="center">Type</column>

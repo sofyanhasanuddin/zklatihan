@@ -62,8 +62,8 @@ public class CustomerFormCtrl extends BaseForm<Owner> {
 
 			row.setValue( data );
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-			String birth = sdf.format( data.getBirthDate() );
+			
+			String birth = new SimpleDateFormat("dd-MMM-yyyy").format( data.getBirthDate() );
 			
 			row.appendChild( new Label( data.getName() ) );
 			row.appendChild( new Label( data.getType().getName() ) );
@@ -138,7 +138,7 @@ public class CustomerFormCtrl extends BaseForm<Owner> {
 	@Listen("onClick=#btnAddPet")
 	public void addPet() {
 		
-		Window window = (Window) Executions.createComponents( "/petform.zul", null, null);
+		Window window = (Window) Executions.createComponents( "/page/petform.zul", null, null);
         window.doModal();
         
         window.addEventListener( Events.ON_CLOSE, 
@@ -162,7 +162,7 @@ public class CustomerFormCtrl extends BaseForm<Owner> {
 		Map<String, Object> mapParam = new HashMap<String, Object>();
 		mapParam.put("param", pet );
 		
-		Window window = (Window) Executions.createComponents( "/petform.zul", null, mapParam);
+		Window window = (Window) Executions.createComponents( "/page/petform.zul", null, mapParam);
         window.doModal();
         
         window.addEventListener(Events.ON_CLOSE, 

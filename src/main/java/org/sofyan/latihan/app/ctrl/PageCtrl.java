@@ -89,7 +89,6 @@ public abstract class PageCtrl<T extends BaseEntity> extends SelectorComposer<Wi
 	
 	void edit(T t, int index) {
 		
-		
 		Map<String, Object> mapParam = new HashMap<String, Object>();
 		mapParam.put("param", t );
 		

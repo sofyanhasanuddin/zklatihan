@@ -1,7 +1,12 @@
 <?page title="Employee Form" contentType="text/html;charset=UTF-8"?>
 <zk>
 
-	<window style="z-index:2000!important;" title="Pet Form" border="normal" closable="false" width="400px" apply="org.sofyan.latihan.app.ctrl.PetFormCtrl">
+	<window style="z-index:2000!important;" 
+			title="Pet Form" 
+			border="normal" 
+			closable="false" 
+			width="400px" 
+			apply="org.sofyan.latihan.app.ctrl.PetFormCtrl">
 	
 		<grid id="form" style="border:none;">
 			<columns>
@@ -12,19 +17,28 @@
 				<row style="background:#FFFFFF;">
 					<label value="Pet Name" />
 					<hlayout>
-						<textbox value="@{ pet.name }" tabindex="5" constraint="no empty:Name should be not empty"  />
+						<textbox value="@{ pet.name }" 
+								tabindex="5" 
+								constraint="no empty:Name should be not empty"  />
 					</hlayout>
 				</row>
 				<row style="background:#FFFFFF;">
 					<label value="Pet Type" />
 					<hlayout>
-						<listbox id="petTypes" tabindex="6" mold="select" hflex="2" model="@{petType}" />
+						<listbox id="petTypes" 
+								tabindex="6" 
+								mold="select" 
+								hflex="2" 
+								model="@{petType}" />
 					</hlayout>
 				</row>
 				<row style="background:#FFFFFF;">
 					<label value="Date of Birth" />
 					<hlayout>
-						<datebox value="@{ pet.birthDate }" tabindex="7" constraint="no empty:Date of Birth should be not empty"/>
+						<datebox value="@{ pet.birthDate }" 
+								tabindex="7" 
+								format="dd/MMM/yyyy"
+								constraint="no empty:Date of Birth should be not empty"/>
 					</hlayout>
 				</row>
 				<row style="background:#FFFFFF;" spans="2">

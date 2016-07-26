@@ -2,6 +2,7 @@
 	<style>
 		body {
 			padding : 0 0px;
+			background-color:#d9d9d9;
 		}
 		.z-row:hover>.z-row-inner>.z-row-content {
     		color: #000;
@@ -17,6 +18,28 @@
 			width: 300px;
 			min-height: 53px;
 		}
+		.header-back {
+			height:100px;
+			/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a7cfdf+0,23538a+100;Blue+3d+%238 */
+			background: #a7cfdf; /* Old browsers */
+			background: -moz-linear-gradient(top,  #a7cfdf 0%, #23538a 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top,  #a7cfdf 0%,#23538a 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom,  #a7cfdf 0%,#23538a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7cfdf', endColorstr='#23538a',GradientType=0 ); /* IE6-9 */
+		}
+		.header-label {
+			font-family: "Times New Roman", Times, serif;
+			font-size: 90px;
+			font-weight:bold;
+			<!-- color:#0086b3; -->
+			color:#450000;
+		}
+		.header-image {
+			background: none;
+			border: none;
+			height:100px;
+			width:320px;
+	    }
 	</style>
 	<zscript>
 		<![CDATA[
@@ -25,26 +48,39 @@
 				if( "logout".equalsIgnoreCase( zulPage ) ) {
 					Executions.sendRedirect("/logout");
 				} else {
-					content.setSrc( "" + zulPage );
+					content.setSrc( "/page/" + zulPage );
 				}
 			}
 		
 		]]>
 	</zscript>
 	<borderlayout apply="org.sofyan.latihan.app.ctrl.IndexCtrl" >
-		<north height="30px">
-			<!-- Begin Menu -->
-			<menubar autodrop="true">
-				<menuitem visible="true" label="Manage Customer(s)" id="customer" value="customer.zul" onClick="changePage( self.value)" />
-				<menuitem visible="true" label="Manage Visit(s)" id="visit" value="visit.zul" onClick="changePage( self.value)" />
-				<menuitem visible="true" label="Manage User(s)" id="user" value="user.zul" onClick="changePage( self.value)" />
-				<menuitem label="Log out" style="float:right !important;" id="logout" value="logout" onClick="changePage( self.value )" />
-			</menubar>
-			<!-- End Menu -->
-		</north>
-		<center border="0" autoscroll="true" >
+		<north height="130px">
 			<div>
-				<include id="content" mode="auto"></include>
+				<div sclass="header-back">
+					<div>
+						<div style="float:left;height:100px;width:320px;">
+							<image sclass="header-image" style="" src="images/header.png" />	
+						</div>
+						<div style="float:left;">
+							<label sclass="header-label">Pet Clinic</label>						
+						</div>
+					</div>
+				</div>
+				<div>
+					<!-- Begin Menu -->
+					<menubar autodrop="true">
+						<menuitem visible="true" label="Manage Owner(s)" id="customer" value="customer.zul" onClick="changePage( self.value)" />
+						<menuitem visible="true" label="Manage Visit(s)" id="visit" value="visit.zul" onClick="changePage( self.value)" />
+						<menuitem label="Log out" style="float:right !important;" id="logout" value="logout" onClick="changePage( self.value )" />
+					</menubar>
+					<!-- End Menu -->
+				</div>
+			</div>
+		</north>
+		<center style="background-color:#d9d9d9;" border="0" autoscroll="true" >
+			<div>
+				<include id="content" mode="auto"/>
 			</div>
 		</center>
 	</borderlayout>

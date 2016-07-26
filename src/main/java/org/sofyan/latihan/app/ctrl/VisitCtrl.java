@@ -177,7 +177,7 @@ public class VisitCtrl extends PageCtrl<Visit> {
 
 	@Override
 	String getZulFormName() {
-		return "/visitform.zul";
+		return "/page/visitform.zul";
 	}
 
 	@Override

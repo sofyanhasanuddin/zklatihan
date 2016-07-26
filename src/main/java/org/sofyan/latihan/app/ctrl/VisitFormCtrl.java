@@ -21,11 +21,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.CollectionUtils;
 import org.zkoss.zhtml.Div;
 import org.zkoss.zk.ui.Executions;
+import org.zkoss.zk.ui.WrongValueException;
 import org.zkoss.zk.ui.event.Events;
 import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zkplus.databind.AnnotateDataBinder;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Datebox;
 import org.zkoss.zul.Grid;
 import org.zkoss.zul.Label;
 import org.zkoss.zul.ListModelList;
@@ -53,6 +55,11 @@ public class VisitFormCtrl extends BaseForm<Visit> {
 	
 	private Visit visit = new Visit();
 	
+	@Wire
+	private Datebox entryDate;
+	@Wire
+	private Datebox leaveDate;
+	
 	private class RowRender implements RowRenderer<VisitDetail> {
 
 		@Override
@@ -61,8 +68,7 @@ public class VisitFormCtrl extends BaseForm<Visit> {
 
 			row.setValue( data );
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-			String birth = sdf.format( data.getPet().getBirthDate() );
+			String birth = new SimpleDateFormat("dd-MMM-yyyy").format( data.getPet().getBirthDate() );
 			
 			row.appendChild( new Label( data.getPet().getName() ) );
 			row.appendChild( new Label( data.getPet().getType().getName() ) );
@@ -148,7 +154,7 @@ public class VisitFormCtrl extends BaseForm<Visit> {
 		Map<String, Object> param = Maps.newHashMap();
 		param.put("pets", pets );
 		
-		Window window = (Window) Executions.createComponents( "/visitPetForm.zul", null, param);
+		Window window = (Window) Executions.createComponents( "/page/visitPetForm.zul", null, param);
         window.doModal();
         
         window.addEventListener( Events.ON_CLOSE, 
@@ -176,7 +182,7 @@ public class VisitFormCtrl extends BaseForm<Visit> {
 		param.put("pets", pets );
 		param.put("visitdetail", data );
 		
-		Window window = (Window) Executions.createComponents( "/visitPetForm.zul", null, param);
+		Window window = (Window) Executions.createComponents( "/page/visitPetForm.zul", null, param);
         window.doModal();
         
         window.addEventListener( Events.ON_CLOSE, 
@@ -202,6 +208,9 @@ public class VisitFormCtrl extends BaseForm<Visit> {
 
 	@Override
 	protected void beforeSave() {
+		
+		if( !this.leaveDate.getValue().after( this.entryDate.getValue()) )
+			throw new WrongValueException(this.leaveDate, "Leave date should be greater than entry date");
 		
 		if( CollectionUtils.isEmpty( this.modelVisitPet) )
 			throw new RuntimeException("Customer should have visited pet");

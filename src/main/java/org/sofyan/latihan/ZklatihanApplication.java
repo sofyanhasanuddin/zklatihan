@@ -24,14 +24,12 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
 import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.zkoss.zk.au.http.DHtmlUpdateServlet;
 import org.zkoss.zk.ui.http.DHtmlLayoutServlet;
 
 @SpringBootApplication
-@Import(SecurityConfig.class)
+@Import({SecurityConfig.class,WebConfig.class})
 @EnableAutoConfiguration
-@EnableWebMvc
 public class ZklatihanApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

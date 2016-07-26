@@ -129,11 +129,8 @@ public class VisitPetFormCtrl extends BaseForm<VisitDetail> {
 	}
 	
 	private void changePetInfo(Pet data) {
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
-		
 		txtType.setValue( data.getType().getName() );
-		txtBod.setValue( sdf.format( data.getBirthDate() ) );
+		txtBod.setValue( new SimpleDateFormat("dd-MMM-yyyy").format( data.getBirthDate() ) );
 	}
 	
 	@Override

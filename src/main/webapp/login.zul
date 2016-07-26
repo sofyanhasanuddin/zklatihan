@@ -1,52 +1,51 @@
 <zk>
 	<style>
-		.centerOfScreen {
+		body {
+			background-color:#d9d9d9;
+		}
+		.center-screen {
 		    position:fixed;
 		    top: 50%;
 		    left: 50%;
 		    width:30em;
 		    margin-top: -9em; /*set to a negative number 1/2 of your height*/
 		    margin-left: -15em; /*set to a negative number 1/2 of your width*/
-		    border: 1px solid #000;
-		    background-color: #f3f3f3;
 		}
-		
-		.loginLabel {
+		.login-label {
 			font-family: "Times New Roman", Times, serif;
 			font-size: 30px;
 			font-weight: bold;
 						
 		}
+		.header-back {
+			background: #485563; /* fallback for old browsers */
+			background: -webkit-linear-gradient(to left, #485563 , #29323c); /* Chrome 10-25, Safari 5.1-6 */
+			background: linear-gradient(to left, #485563 , #29323c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		}
 		.z-row:hover>.z-row-inner>.z-row-content {
     		color: #000;
-		}
-		.z-grid-odd>.z-row-inner, .z-grid-odd>.z-cell {
-			background:#FFFFFF;
-		}
-		.z-row-inner {
-			background:#FFFFFF;
-		}		
+		} 	
 	</style>
 
-	<div sclass="centerOfScreen">
-		<div style="background-color:#e67300;border: 0 1px;padding:5px;">
-			<label sclass="loginLabel">Login</label>
+	<div sclass="center-screen">
+		<div sclass="header-back">
+			<image style="height:80px;width:320px" src="images/header.png" />
 		</div>
 		<html:form action="j_spring_security_check" method="POST" xmlns:html="native">
 		    <grid>
 		        <rows>
-		        	<row if="${not empty param.login_error}" spans="2">
+		        	<row style="background:#FFFFFF;" if="${not empty param.login_error}" spans="2">
 		        		<hbox style="color:red;">
 						        Your login attempt was not successful, try again.
 						        Reason: ${SPRING_SECURITY_LAST_EXCEPTION.message}
 		        		</hbox>
 		        	</row>
-		            <row><label>User: </label><textbox id="u" name="j_username"/></row>
-		            <row>Password: <textbox id="p" type="password" name="j_password"/></row>
-		            <row spans="2">
+		            <row style="background:#FFFFFF;"><label>User: </label><textbox id="u" name="j_username" value="sofyan"/></row>
+		            <row style="background:#FFFFFF;">Password: <textbox id="p" type="password" name="j_password" value="qwerty"/></row>
+		            <row style="background:#FFFFFF;" spans="2">
 		                <div align="center">
-		                    <button type="reset" label="Reset" />
-		                    <button type="submit" label="Login" />
+		                	<button type="submit" label="Login" />
+		                    <button type="reset" label="Clear" />
 		                </div>
 		            </row>
 		        </rows>

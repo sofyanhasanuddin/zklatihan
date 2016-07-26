@@ -1,10 +1,10 @@
 <?page title="Employee Form" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window title="Visit Form" 
+	<window title="Owner Form" 
 			border="normal" 
 			closable="false" 
-			width="1000px" 
-			apply="org.sofyan.latihan.app.ctrl.VisitFormCtrl">
+			width="800px" 
+			apply="org.sofyan.latihan.app.ctrl.CustomerFormCtrl">
 
 		<grid style="border:none;">
 			<columns>
@@ -13,36 +13,39 @@
 			</columns>
 			<rows id="form" >
 				<row style="background:#FFFFFF;">
-					<label value="Customer Name" />
+					<label value="Name" />
 					<hlayout>
-						<label id="sampleTxt" 
-								value="@{ visit.owner.name }"/>
+						<textbox id="sampleTxt" 
+								value="@{ customer.name }" 
+								tabindex="1" 
+								constraint="no empty:Name should be not empty" />
 					</hlayout>
 				</row>
 				<row style="background:#FFFFFF;">
-					<label value="Entry Date" />
-					<hlayout>
-						<datebox value="@{ visit.entryDate }" 
-								tabindex="2" 
-								constraint="no empty:Entry date should be not empty"  />
-					</hlayout>
-				</row>
-				<row style="background:#FFFFFF;">
-					<label value="Leave Date" />
-					<hlayout>
-						<datebox value="@{ visit.leaveDate }" 
-								tabindex="3" 
-								constraint="no empty:Leave date should be not empty"  />
-					</hlayout>
-				</row>
-				<row style="background:#FFFFFF;">
-					<label value="Note" />
+					<label value="Address" />
 					<hlayout>
 						<textbox multiline="true" 
 								height="80px" 
 								width="250px;" 
-								value="@{ visit.note }" 
-								tabindex="4" />
+								value="@{ customer.address }" 
+								tabindex="2" 
+								constraint="no empty:Address should be not empty"  />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="City" />
+					<hlayout>
+						<textbox value="@{ customer.city }" 
+								tabindex="3" 
+								constraint="no empty:City should be not empty"  />
+					</hlayout>
+				</row>
+				<row style="background:#FFFFFF;">
+					<label value="Telephone" />
+					<hlayout>
+						<intbox value="@{ customer.telephone }" 
+								tabindex="4" 
+								constraint="no empty:Telephone should be not empty"  />
 					</hlayout>
 				</row>
 			</rows>
@@ -53,7 +56,7 @@
 			<div style="margin-bottom:5px;">
 				<button id="btnAddPet" >Add</button>
 			</div>
-			<grid id="gridPetVisitDetail" emptyMessage="There is no pet(s)">
+			<grid id="gridPet" emptyMessage="There is no pet(s)">
 				<columns>
 					<column align="center" >Name</column>
 					<column align="center">Type</column>
