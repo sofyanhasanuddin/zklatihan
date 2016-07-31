@@ -17,9 +17,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		
 		http.authorizeRequests()
-				.antMatchers("/index.zul")
-					.hasAuthority("ROLE_USER")
-				.antMatchers("/page/**")
+				.antMatchers("/zkau/**","/images/**")
+					.permitAll()
+				.antMatchers("/**")
 					.authenticated()
 			.and()
 				.formLogin()
@@ -29,10 +29,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.passwordParameter("j_password")
 				.failureUrl("/login.zul?login_error=1")
 				.defaultSuccessUrl("/index.zul")
-				.permitAll()
-			.and()
-				.authorizeRequests()
-				.antMatchers("/zkau/**","/images/**")
 				.permitAll()
 			.and()
 				.logout()

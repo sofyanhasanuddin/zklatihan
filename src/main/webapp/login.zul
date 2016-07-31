@@ -26,7 +26,7 @@
     		color: #000;
 		} 	
 	</style>
-
+	
 	<div sclass="center-screen">
 		<div sclass="header-back">
 			<image style="height:80px;width:320px" src="images/header.png" />
