@@ -10,7 +10,7 @@ Technologies used
 
 Online Demo
 -
-You can access online this apps on openshift with url http://petcliniczk-sh2210.rhcloud.com/petcliniczk/login.zul
+You can access online this apps on openshift with url https://zk-pet-clinic.herokuapp.com/petcliniczk/login.zul
 
 How to Run on Your Local
 ---
